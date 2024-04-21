@@ -4,6 +4,38 @@
  */
 import { config, database, logger, changePanel, appdata, setStatus, pkg, popup } from '../utils.js'
 
+// cambiar información de la actividad de discord en el launcher
+const clientId = '1231070606460588155';
+const DiscordRPC = require('discord-rpc');
+const RPC = new DiscordRPC.Client({ transport: 'ipc' });
+var startingTime = Date.now();
+DiscordRPC.register(clientId);
+
+async function setActivity() {
+    if (!RPC) return;
+};
+RPC.on('ready', async () => {
+    setActivity();
+    RPC.setActivity({
+        state: `En el menú principal`,
+        startTimestamp: startingTime,
+        largeImageKey: 'larga',
+        smallImageKey: 'logodrogas',
+        largeImageText: `Spider-client`,
+        instance: true,
+        buttons: [
+            {
+                label: `Discord`,
+                url: `https://discord.gg/rhrakTF9`,
+            }
+        ]
+    }).catch();
+    setInterval(() => {
+        setActivity();
+    }, 86400 * 1000);
+});
+RPC.login({ clientId }).catch(err => console.error('Servidor de Discord no detectado. Tranquilo, esto no es una crisis.'));
+
 const { Launch } = require('minecraft-java-core')
 const { shell, ipcRenderer } = require('electron')
 
@@ -61,7 +93,7 @@ class Home {
                         <div class="news-content">
                             <div class="bbWrapper">
                                 <p>${News.content.replace(/\n/g, '</br>')}</p>
-                                <p class="news-author">Auteur - <span>${News.author}</span></p>
+                                <p class="news-author">Author - <span>${News.author}</span></p>
                             </div>
                         </div>`
                     newsElement.appendChild(blockNews);
@@ -256,14 +288,14 @@ class Home {
         });
 
         launch.on('progress', (progress, size) => {
-            infoStarting.innerHTML = `Téléchargement ${((progress / size) * 100).toFixed(0)}%`
+            infoStarting.innerHTML = `Descargando... ${((progress / size) * 100).toFixed(0)}%`
             ipcRenderer.send('main-window-progress', { progress, size })
             progressBar.value = progress;
             progressBar.max = size;
         });
 
         launch.on('check', (progress, size) => {
-            infoStarting.innerHTML = `Vérification ${((progress / size) * 100).toFixed(0)}%`
+            infoStarting.innerHTML = `Verificando... ${((progress / size) * 100).toFixed(0)}%`
             ipcRenderer.send('main-window-progress', { progress, size })
             progressBar.value = progress;
             progressBar.max = size;
@@ -283,7 +315,7 @@ class Home {
         launch.on('patch', patch => {
             console.log(patch);
             ipcRenderer.send('main-window-progress-load')
-            infoStarting.innerHTML = `Patch en cours...`
+            infoStarting.innerHTML = `Parcheando...`
         });
 
         launch.on('data', (e) => {
@@ -291,6 +323,20 @@ class Home {
             if (configClient.launcher_config.closeLauncher == 'close-launcher') {
                 ipcRenderer.send("main-window-hide")
             };
+            RPC.setActivity({
+                state: `Jugando a '${configClient.instance_selct}'`,
+                startTimestamp: startingTime,
+                largeImageKey: 'larga',
+                smallImageKey: 'brazucalogo',
+                largeImageText: `Minecraft`,
+                instance: true,
+                buttons: [
+                    {
+                        label: `Discord`,
+                        url: `https://discord.gg/`,
+                    }
+                ]
+            })
             new logger('Minecraft', '#36b030');
             ipcRenderer.send('main-window-progress-load')
             infoStarting.innerHTML = `Demarrage en cours...`
@@ -307,27 +353,76 @@ class Home {
             infoStarting.innerHTML = `Vérification`
             new logger(pkg.name, '#7289da');
             console.log('Close');
+            RPC.setActivity({
+                state: `En el cliente`,
+                largeImageKey: 'larga',
+                smallImageKey: 'corta',
+                largeImageText: `Spider-Client`,
+                instance: true,
+                buttons: [
+                    {
+                        label: `Discord`,
+                        url: `https://discord.gg/`,
+                    }
+                ]
+            }).catch();
         });
 
         launch.on('error', err => {
             let popupError = new popup()
+            if (typeof err.error === 'undefined') {
+                new logger(pkg.name, '#7289da');
+                console.warn('Ha occurrido un error en la descarga de algún archivo. Si el juego no inicia correctamente esto puede ser la causa.');
+                if (configClient.launcher_config.closeLauncher == 'close-launcher') {
+                    ipcRenderer.send("main-window-show")
+                };
+                RPC.setActivity({
+                    state: `En el cliente`,
+                    largeImageKey: 'icon',
+                    smallImageKey: 'verificado',
+                    largeImageText: `Miguelki Network`,
+                    instance: true,
+                    buttons: [
+                        {
+                            label: `Discord`,
+                            url: `https://discord.gg/7kPGjgJND7`,
+                        }
+                    ]
+                }).catch();
+            } else {
+                
 
-            popupError.openPopup({
-                title: 'Erreur',
-                content: err.error,
-                color: 'red',
-                options: true
-            })
+                popupError.openPopup({
+                    title: 'Error',
+                    content: err.error,
+                    color: 'red',
+                    options: true
+                })
+    
+                if (configClient.launcher_config.closeLauncher == 'close-launcher') {
+                    ipcRenderer.send("main-window-show")
+                };
+                ipcRenderer.send('main-window-progress-reset')
+                infoStartingBOX.style.display = "none"
+                playInstanceBTN.style.display = "flex"
+                infoStarting.innerHTML = `Verificando...`
+                new logger(pkg.name, '#7289da');
+                console.log(err);
+                RPC.setActivity({
+                    state: `En el cliente`,
+                    largeImageKey: 'icon',
+                    smallImageKey: 'verificado',
+                    largeImageText: `Miguelki Network`,
+                    instance: true,
+                    buttons: [
+                        {
+                            label: `Discord`,
+                            url: `https://discord.gg/7kPGjgJND7`,
+                        }
+                    ]
+                }).catch();
+            }
 
-            if (configClient.launcher_config.closeLauncher == 'close-launcher') {
-                ipcRenderer.send("main-window-show")
-            };
-            ipcRenderer.send('main-window-progress-reset')
-            infoStartingBOX.style.display = "none"
-            playInstanceBTN.style.display = "flex"
-            infoStarting.innerHTML = `Vérification`
-            new logger(pkg.name, '#7289da');
-            console.log(err);
         });
     }
 
@@ -336,7 +431,7 @@ class Home {
         let year = date.getFullYear()
         let month = date.getMonth() + 1
         let day = date.getDate()
-        let allMonth = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+        let allMonth = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
         return { year: year, month: allMonth[month - 1], day: day }
     }
 }

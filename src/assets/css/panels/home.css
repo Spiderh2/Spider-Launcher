@@ -10,6 +10,12 @@
  * Status server                                                               *
  *                                                                             *
  ******************************************************************************/
+ .status-server {
+    display: flex;
+    height: 78vh;
+    margin: 3rem 2rem;
+}
+
 
 .status-server {
     position: relative;
@@ -17,8 +23,10 @@
     justify-content: space-between;
     align-items: center;
     background: var(--background);
-    width: 25rem;
+    width: 20rem;
     height: 3rem;
+    top: 1%;
+    left: 33%;
     color: var(--color);
     border-radius: 10px;
     margin-top: 3rem;
@@ -103,10 +111,12 @@
 }
 
 .news-list {
-    width: 90%;
-    height: 100%;
-    border-radius: 10px;
-    margin: 1rem 0;
+    position: absolute;
+    overflow: auto;
+    width: 47%;
+    height: 50%;
+    top: 50%;
+    left: 10%;
 }
 
 .news-block {
@@ -114,6 +124,17 @@
     margin: 0 0 1rem 0;
     border-radius: 10px;
     background: var(--background-transparent);
+    transition: opacity 1s;
+    opacity: .4;
+}
+
+.news-block:hover {
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+.opacity-1 {
+    opacity: 1;
 }
 
 .news-header {
@@ -214,7 +235,37 @@
     align-items: center;
     width: 100%;
     height: 90px;
-    background: var(--background-transparent);
+    background: #ffffff00;
+}
+
+.server-informations {
+    position: absolute;
+    width: 500px;
+    height: 150px;
+    top: 20%;
+    left: 5%;
+}
+
+.server-description {
+    position: absolute;
+    top: 27%;
+    color: #ffffff;
+    font: normal normal bold 15px/25px Poppins;
+    font-weight: 300;
+    width: 600px;
+    left: 13.5%;
+}
+
+.big-title {
+    position: absolute;
+    font: normal normal bold 85px/25px Poppins;
+    font-weight: 900;
+    letter-spacing: 5px;
+    bottom: 50%;
+    left: 13%;
+    width: 500px;
+    height: 80px;
+    color: #ffffff;
 }
 
 .player-options {
@@ -227,12 +278,14 @@
 }
 
 .player-head {
+    position: absolute;
     background: url('../../images/default/setve.png'), no-repeat;
     background-size: cover;
     image-rendering: pixelated;
     transition: var(--transition);
-    height: 3rem;
-    width: 3rem;
+    top: 3%;
+    width: 70px;
+    height: 70px;
     pointer-events: none;
     border-radius: 15px;
 }
@@ -254,33 +307,42 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    border: solid 3px var(--element-color);
+    border: #ffffff00;
     border-radius: 15px;
     height: 3.2rem;
     padding-right: 1.9rem;
 }
 
 .play-btn {
+    position: absolute;
+    top: -20px;
+    left: -400px;
+    width: 281px;
+    height: 50px;
+    border-radius: 100px;
     border: none;
-    border-radius: 10px;
-    background: none;
-    color: var(--color);
-    font-size: 2rem;
-    font-weight: bolder;
-    padding: 0 1.5rem;
-    pointer-events: none;
+    background: #ffffff;
+    font: normal normal bold 20px/25px Poppins;
+    color: #000000;
+    margin: 15px 0;
+    cursor: crosshair;
+}
+
+.play-btn:hover {
+    border-radius: 15px;
+    transition: all 0.3s cubic-bezier(1, 0.46, 0, 1.29);
 }
 
 .instance-select {
     display: flex;
     align-items: center;
     position: absolute;
-    right: -3;
-    top: -2;
-    color: var(--element-color);
+    right: 735;
+    top: -330;
+    color: var(--element-color2);
     font-size: 1rem;
     height: calc(100% - 1px);
-    border: solid 3px var(--element-color);
+    border: solid 3px var(--element-color2);
     text-align: center;
     border-radius: 15px;
     padding: 0 0.5rem;
@@ -293,11 +355,17 @@
 }
 
 .info-starting-game {
+    position: absolute;
+    top: 860px;
+    left: 1610px;
     display: none;
     text-align: center;
 }
 
 .progress-bar {
+    position: absolute;
+    top: 50px;
+    left: -10px;
     appearance: none;
     height: 10px;
     margin: 0.5rem 0;
@@ -315,11 +383,24 @@
 }
 
 .settings-btn {
-    width: 3rem;
-    height: 3rem;
-    font-size: 3rem;
-    color: var(--element-color);
-    margin: 0 1.5rem;
+    position: absolute;
+    color: #000000;
+    font-size: 2.5rem;
+    top: 967px;
+    right: 1%;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    background: #ffffff;
+    border: none;
+    border-radius: 100px;
+    transition: all 0.3s cubic-bezier(1, 0.46, 0, 1.29);
+    cursor: pointer;
+}
+
+.settings-btn:hover {
+    border-radius: 15px;
+    transition: all 0.3s cubic-bezier(1, 0.46, 0, 1.29);
 }
 
 .instance-popup {
