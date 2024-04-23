@@ -21,12 +21,12 @@ RPC.on('ready', async () => {
         startTimestamp: startingTime,
         largeImageKey: 'larga',
         smallImageKey: 'logodrogas',
-        largeImageText: `Spider-client`,
+        largeImageText: `Spider client`,
         instance: true,
         buttons: [
             {
-                label: `Discord`,
-                url: `https://discord.gg/rhrakTF9`,
+                label: `REDES SOCIALES`,
+                url: `https://www.tiktok.com/@spiderstudioh`,
             }
         ]
     }).catch();
@@ -326,14 +326,14 @@ class Home {
             RPC.setActivity({
                 state: `Jugando a '${configClient.instance_selct}'`,
                 startTimestamp: startingTime,
-                largeImageKey: 'larga',
-                smallImageKey: 'brazucalogo',
+                largeImageKey: 'LogoMinecraft',
+                smallImageKey: 'logominecraft',
                 largeImageText: `Minecraft`,
                 instance: true,
                 buttons: [
                     {
-                        label: `Discord`,
-                        url: `https://discord.gg/`,
+                        label: `REDES SOCIALES`,
+                        url: `https://www.tiktok.com/@spiderstudioh`,
                     }
                 ]
             })
@@ -354,15 +354,15 @@ class Home {
             new logger(pkg.name, '#7289da');
             console.log('Close');
             RPC.setActivity({
-                state: `En el cliente`,
-                largeImageKey: 'larga',
-                smallImageKey: 'corta',
-                largeImageText: `Spider-Client`,
+                state: `Minecraft`,
+                largeImageKey: 'logodrogas',
+                smallImageKey: 'LogoMinecraft',
+                largeImageText: `Spider Client`,
                 instance: true,
                 buttons: [
                     {
-                        label: `Discord`,
-                        url: `https://discord.gg/`,
+                        label: `REDES SOCIALES`,
+                        url: `https://www.tiktok.com/@spiderstudioh`,
                     }
                 ]
             }).catch();
@@ -384,8 +384,8 @@ class Home {
                     instance: true,
                     buttons: [
                         {
-                            label: `Discord`,
-                            url: `https://discord.gg/7kPGjgJND7`,
+                            label: `REDES SOCIALES`,
+                            url: `https://www.tiktok.com/@spiderstudioh`,
                         }
                     ]
                 }).catch();
@@ -416,8 +416,8 @@ class Home {
                     instance: true,
                     buttons: [
                         {
-                            label: `Discord`,
-                            url: `https://discord.gg/7kPGjgJND7`,
+                            label: `REDES SOCIALES`,
+                            url: `https://www.tiktok.com/@spiderstudioh`,
                         }
                     ]
                 }).catch();

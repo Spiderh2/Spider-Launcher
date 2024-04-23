@@ -87,6 +87,7 @@
     display: flex;
 }
 
+
 /*******************************************************************************
  *                                                                             *
  * news server                                                                 *
@@ -124,8 +125,6 @@
     margin: 0 0 1rem 0;
     border-radius: 10px;
     background: var(--background-transparent);
-    transition: opacity 1s;
-    opacity: .4;
 }
 
 .news-block:hover {
@@ -186,7 +185,7 @@
  *                                                                             *
  ******************************************************************************/
 
-.social-tab {
+ .social-tab {
     position: absolute;
     display: flex;
     bottom: 0;
@@ -290,10 +289,10 @@
     border-radius: 15px;
 }
 
-.player-menu {
-    color: var(--element-color);
-    transform: rotate(270deg);
-    pointer-events: none;
+.play-elements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .play-elements {
@@ -307,25 +306,21 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    border: #ffffff00;
+    border: solid 3px var(--element-color);
     border-radius: 15px;
     height: 3.2rem;
     padding-right: 1.9rem;
 }
 
 .play-btn {
-    position: absolute;
-    top: -20px;
-    left: -400px;
-    width: 281px;
-    height: 50px;
-    border-radius: 100px;
     border: none;
-    background: #ffffff;
-    font: normal normal bold 20px/25px Poppins;
-    color: #000000;
-    margin: 15px 0;
-    cursor: crosshair;
+    border-radius: 10px;
+    background: none;
+    color: var(--color);
+    font-size: 2rem;
+    font-weight: bolder;
+    padding: 0 1.5rem;
+    pointer-events: none;
 }
 
 .play-btn:hover {
@@ -337,12 +332,12 @@
     display: flex;
     align-items: center;
     position: absolute;
-    right: 735;
-    top: -330;
-    color: var(--element-color2);
+    right: -3;
+    top: -2;
+    color: var(--element-color);
     font-size: 1rem;
     height: calc(100% - 1px);
-    border: solid 3px var(--element-color2);
+    border: solid 3px var(--element-color);
     text-align: center;
     border-radius: 15px;
     padding: 0 0.5rem;
@@ -355,17 +350,11 @@
 }
 
 .info-starting-game {
-    position: absolute;
-    top: 860px;
-    left: 1610px;
     display: none;
     text-align: center;
 }
 
 .progress-bar {
-    position: absolute;
-    top: 50px;
-    left: -10px;
     appearance: none;
     height: 10px;
     margin: 0.5rem 0;
@@ -382,21 +371,16 @@
     border-radius: 10px;
 }
 
+
 .settings-btn {
-    position: absolute;
-    color: #000000;
-    font-size: 2.5rem;
-    top: 967px;
-    right: 1%;
-    text-align: center;
-    height: 50px;
-    width: 50px;
-    background: #ffffff;
-    border: none;
-    border-radius: 100px;
-    transition: all 0.3s cubic-bezier(1, 0.46, 0, 1.29);
+    width: 3rem;
+    height: 3rem;
+    font-size: 3rem;
+    color: var(--element-color);
+    margin: 0 1.5rem;
     cursor: pointer;
 }
+
 
 .settings-btn:hover {
     border-radius: 15px;

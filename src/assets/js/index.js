@@ -32,7 +32,7 @@ class Splash {
         let splashes = [
             { "message": "Hola!!", "author": "Spider/Araña" },
             { "message": "Bienvenido a el cliente de Spider.", "autor": "Spider/Araña" },
-            { "message": "Linux no es un sistema operativo, sino un kernel.", "author": "Spider/Araña" }
+            { "message": "Hecho por Araña.", "author": "Spider/Araña" }
         ];
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
