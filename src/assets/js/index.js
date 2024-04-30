@@ -30,13 +30,30 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "Hola!!", "author": "Spider/Araña" },
-            { "message": "Bienvenido a el cliente de Spider.", "autor": "Spider/Araña" },
-            { "message": "Hecho por Araña.", "author": "Spider/Araña" }
+            { "message": "Miguelki Network", "author": "Miguelki" },
+            { "message": "Das Leben ist nicht Schwäche verzeihen", "author": "Adolf Hitler" },
+            { "message": "1 de cada 2 personas son gays.", "author": "Miguelki" },
+            { "message": "Zzz", "author": "Miguelki" },
+            { "message": "Messi", "author": "Messi" },
+            { "message": "Aún va sin h miguel", "author": "Carmen" },
+            { "message": "Vaporeon puede tener relaciones con humanos", "author": " " },
+            { "message": "Tienes menos luces que una lampara", "author": "Miguelki" },
+            { "message": "Te llama tu madre", "author": "Miguelki" },
+            { "message": "Argentina ganó 🏳‍🌈. Ups bandera erronea", "author": "Miguelki" },
+            { "message": "Perdon por besar a tu madre", "author": "Miguelki" },
+            { "message": "Bese a tu novia. Ah perdon que no tienes", "author": "Miguelki" },
+            { "message": "Entrando en tu cerebro.", "author": "Miguelki" },
+            { "message": "13, cuanto más me la mamas más me crece.", "author": "Dixo" },
+            { "message": "🕸️🕷️🤘", "author": "Chiquicas" },
+            { "message": "Dixo es super maricón 🏳‍🌈👨🏿‍❤️‍💋‍👨🏿", "author": "Chiquicas" },
+            { "message": "Va llorah, Mateo?", "author": "Dixo" },
+            { "message": "Ayuda.... Foack. Ayuda.... Foack. Ayuda.... Foack.", "author": "Miguelki" },
+            { "message": "Milleurista???", "author": "Joako Puto" },
+            { "message": "Me aburro", "author": "Miguelki" }
         ];
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
-        this.splashAuthor.children[0].textContent = "@" + splash.author;
+        this.splashAuthor.children[0].textContent = splash.author;
         await sleep(100);
         document.querySelector("#splash").style.display = "block";
         await sleep(500);
@@ -51,14 +68,14 @@ class Splash {
     }
 
     async checkUpdate() {
-        this.setStatus(`Buscando una actualización...`);
+        this.setStatus(`Buscando actualizaciones...`);
 
         ipcRenderer.invoke('update-app').then().catch(err => {
-            return this.shutdown(`error al buscar actualización :<br>${err.message}`);
+            return this.shutdown(`Error al buscar actualizaciones:<br>${err.message}`);
         });
 
         ipcRenderer.on('updateAvailable', () => {
-            this.setStatus(`M¡Hay actualización disponible!`);
+            this.setStatus(`Actualización disponible`);
             if (os.platform() == 'win32') {
                 this.toggleProgress();
                 ipcRenderer.send('start-update');
@@ -76,7 +93,7 @@ class Splash {
         })
 
         ipcRenderer.on('update-not-available', () => {
-            console.error("¡Hay actualización disponible!");
+            console.error("Actualización no disponible");
             this.maintenanceCheck();
         })
     }
@@ -105,7 +122,7 @@ class Splash {
         else if (os == 'linux') latest = this.getLatestReleaseForOS('linux', '.appimage', latestRelease);
 
 
-        this.setStatus(`¡Hay actualización disponible !<br><div class="download-update">Télécharger</div>`);
+        this.setStatus(`Actualización disponible<br><div class="download-update">Descargar</div>`);
         document.querySelector(".download-update").addEventListener("click", () => {
             shell.openExternal(latest.browser_download_url);
             return this.shutdown("Descargando...");
@@ -119,21 +136,21 @@ class Splash {
             this.startLauncher();
         }).catch(e => {
             console.error(e);
-            return this.shutdown("No se detectó ninguna conexión a Internet.<br>Vuelve a intentarlo más tarde.");
+            return this.shutdown("No se ha podido conectar al servidor.<br>Por favor, inténtalo más tarde.");
         })
     }
 
     startLauncher() {
-        this.setStatus(`Iniciando el lanzador`);
+        this.setStatus(`Iniciando launcher`);
         ipcRenderer.send('main-window-open');
         ipcRenderer.send('update-window-close');
     }
 
     shutdown(text) {
-        this.setStatus(`${text}<br>Apagar en 5 segundos`);
+        this.setStatus(`${text}<br>Saliendo en 5s`);
         let i = 4;
         setInterval(() => {
-            this.setStatus(`${text}<br>Parar en ${i--}s`);
+            this.setStatus(`${text}<br>Saliendo en ${i--}s`);
             if (i < 0) ipcRenderer.send('update-window-close');
         }, 1000);
     }
