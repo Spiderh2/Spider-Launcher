@@ -55,7 +55,7 @@ async function setVideoSource(game = '') {
                     source = './assets/images/background/winter.mp4';
                     break;
                 default:
-                    source = './assets/images/background/winter.mp4'; // establecer un valor predeterminado
+                    source = './assets/images/background/spring.mp4'; // establecer un valor predeterminado
                     break;
             }
         }

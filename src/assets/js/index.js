@@ -30,26 +30,18 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "Miguelki Network", "author": "Miguelki" },
-            { "message": "Das Leben ist nicht Schwäche verzeihen", "author": "Adolf Hitler" },
-            { "message": "1 de cada 2 personas son gays.", "author": "Miguelki" },
-            { "message": "Zzz", "author": "Miguelki" },
-            { "message": "Messi", "author": "Messi" },
-            { "message": "Aún va sin h miguel", "author": "Carmen" },
-            { "message": "Vaporeon puede tener relaciones con humanos", "author": " " },
-            { "message": "Tienes menos luces que una lampara", "author": "Miguelki" },
-            { "message": "Te llama tu madre", "author": "Miguelki" },
-            { "message": "Argentina ganó 🏳‍🌈. Ups bandera erronea", "author": "Miguelki" },
-            { "message": "Perdon por besar a tu madre", "author": "Miguelki" },
-            { "message": "Bese a tu novia. Ah perdon que no tienes", "author": "Miguelki" },
-            { "message": "Entrando en tu cerebro.", "author": "Miguelki" },
-            { "message": "13, cuanto más me la mamas más me crece.", "author": "Dixo" },
-            { "message": "🕸️🕷️🤘", "author": "Chiquicas" },
-            { "message": "Dixo es super maricón 🏳‍🌈👨🏿‍❤️‍💋‍👨🏿", "author": "Chiquicas" },
-            { "message": "Va llorah, Mateo?", "author": "Dixo" },
-            { "message": "Ayuda.... Foack. Ayuda.... Foack. Ayuda.... Foack.", "author": "Miguelki" },
-            { "message": "Milleurista???", "author": "Joako Puto" },
-            { "message": "Me aburro", "author": "Miguelki" }
+            { "message": "Espera un poco, no comas ancias", "author": "Spdier/Araña" },
+            { "message": "1 de cada 2 personas son gays.", "author": "Spdier/Araña" },
+            { "message": "Pero no te duermas!!", "author": "Spdier/Araña" },
+            { "message": "Vaporeon puede tener relaciones con humanos", "author": "Spdier/Araña" },
+            { "message": "Que si man, que tu lo haces mejor 🙄", "author": "Spdier/Araña" },
+            { "message": "Argentina ganó 🏳‍🌈. Ups bandera erronea", "author": "Spdier/Araña" },
+            { "message": "Perdon por besar a tu madre", "author": "Spdier/Araña" },
+            { "message": "Bese a tu novia. Ah perdon que no tienes", "author": "Spdier/Araña" },
+            { "message": "Entrando en tu cerebro.", "author": "Spdier/Araña" },
+            { "message": "13, cuanto más me la mamas más me crece.", "author": "Spdier/Araña" },
+            { "message": "🕸️🕷️🤘", "author": "Spdier/Araña" },
+            { "message": "Me aburro", "author": "Spdier/Araña" }
         ];
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
