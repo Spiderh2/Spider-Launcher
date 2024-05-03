@@ -144,7 +144,6 @@ input::-webkit-inner-spin-button {
     color: #fff;
     cursor: pointer;
     z-index: 2;
-    transition: color 0.05s, background-color 0.2s, background-image 0.2s, top 0.2s, left 0.2s, height 0.2s, opacity 0.2s, margin 0.2s;
 }
 .popup-button:hover {
     background-color: var(--box-button-hover);
@@ -159,8 +158,6 @@ input::-webkit-inner-spin-button {
     overflow: hidden;
     z-index: 0;
     pointer-events: none;
-    transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
-    transition-delay: 0s, 0.2s; /* Add this line */
 }
 
 .active {
@@ -168,7 +165,6 @@ input::-webkit-inner-spin-button {
     max-height: 100vh;
     z-index: 1;
     pointer-events: all;
-    transition-delay: 0.2s, 0s; /* Add this line */
 }
 
 .background-video {
@@ -179,7 +175,6 @@ input::-webkit-inner-spin-button {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    transition: opacity 1s; /* adjust the duration as needed */
 }
 
 .background-video.next {

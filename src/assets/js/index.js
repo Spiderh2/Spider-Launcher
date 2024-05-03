@@ -30,22 +30,13 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "Espera un poco, no comas ancias", "author": "Spdier/Araña" },
-            { "message": "1 de cada 2 personas son gays.", "author": "Spdier/Araña" },
-            { "message": "Pero no te duermas!!", "author": "Spdier/Araña" },
-            { "message": "Vaporeon puede tener relaciones con humanos", "author": "Spdier/Araña" },
-            { "message": "Que si man, que tu lo haces mejor 🙄", "author": "Spdier/Araña" },
-            { "message": "Argentina ganó 🏳‍🌈. Ups bandera erronea", "author": "Spdier/Araña" },
-            { "message": "Perdon por besar a tu madre", "author": "Spdier/Araña" },
-            { "message": "Bese a tu novia. Ah perdon que no tienes", "author": "Spdier/Araña" },
-            { "message": "Entrando en tu cerebro.", "author": "Spdier/Araña" },
-            { "message": "13, cuanto más me la mamas más me crece.", "author": "Spdier/Araña" },
-            { "message": "🕸️🕷️🤘", "author": "Spdier/Araña" },
-            { "message": "Me aburro", "author": "Spdier/Araña" }
+            { "message": "CARGANDO, NO COMAS ANCIAS", "author": "SPIDER" },
+            { "message": "En Canadá hay más lagos que en el resto del mundo", "author": "SPIDER" },
+            { "message": "Bolivia, el país más plano del mundo", "author": "SPIDER" }
         ];
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
-        this.splashAuthor.children[0].textContent = splash.author;
+        this.splashAuthor.children[0].textContent = "@" + splash.author;
         await sleep(100);
         document.querySelector("#splash").style.display = "block";
         await sleep(500);
@@ -68,10 +59,7 @@ class Splash {
 
         ipcRenderer.on('updateAvailable', () => {
             this.setStatus(`Actualización disponible`);
-            if (os.platform() == 'win32') {
-                this.toggleProgress();
-                ipcRenderer.send('start-update');
-            }
+            if (os.platform() == 'win32') ipcRenderer.send('start-update');
             else return this.dowloadUpdate();
         })
 
@@ -80,6 +68,7 @@ class Splash {
         })
 
         ipcRenderer.on('download-progress', (event, progress) => {
+            this.toggleProgress();
             ipcRenderer.send('update-window-progress', { progress: progress.transferred, size: progress.total })
             this.setProgress(progress.transferred, progress.total);
         })

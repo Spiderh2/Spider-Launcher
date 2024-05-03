@@ -1,31 +1,8 @@
-* {
-    --icon-unselected: #707070;
-    --box: #1A1A1A;
-    --box-hover: #202020;
-    --box-button: #0078bd;
-    --box-button-hover: #053e8a;
-    --box-button-hover-2: #001f47;
-    --box-button-gradient-1: 	#00FFFF;
-    --box-button-gradient-2: 	#0096FF;
-    --notification-red: rgba(255, 0, 0, 0.25);
-    --notification-green: rgba(0, 255, 0, 0.25);
-    --notification-blue: rgba(0, 0, 255, 0.25);
-    --notification-yellow: rgba(255, 255, 0, 0.25);
-}
-
 .home .container {
     display: flex;
     height: 100%;
     flex-direction: column;
     align-items: center;
-}
-/* topbar tiene todos los elementos alineados horizontalmente y en el centro */
-.topbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 10rem;
 }
 
 /*******************************************************************************
@@ -35,24 +12,18 @@
  ******************************************************************************/
 
 .status-server {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--background);
     width: 25rem;
     height: 3rem;
+    color: var(--color);
     border-radius: 10px;
     margin-top: 3rem;
     padding: 1rem;
     text-align: center;
-    background-color: var(--sidebar);
-    border-right: 1px solid var(--sidebar-border);
-    transition: all 0.2s;
-    background: rgba( 0, 0, 0, 0.05 );
-    border-radius: 10px;
-    
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    backdrop-filter: blur( 15.5px );
-    -webkit-backdrop-filter: blur( 15.5px );
 }
 
 .server-status-icon {
@@ -61,7 +32,7 @@
 
 .server-status-name {
     font-size: 1.5rem;
-    color:#fff;
+    color: var(--color);
 }
 
 .server-status-text {
@@ -114,31 +85,23 @@
  *                                                                             *
  ******************************************************************************/
 
-.storebutton {
-    width:98%;
-    display:block;
-    text-align:center;
-    padding:.5em;
-    background-color: var(--box-button);
-    box-shadow: 0px 3px 6px #00000029;
-    border-radius: 25px;
-    color: #fff;
-    cursor: pointer;
-    z-index: 2;
-    transition: color 0.05s, background-color 0.2s, background-image 0.2s, top 0.2s, left 0.2s, height 0.2s, opacity 0.2s, margin 0.2s;
-    text-decoration:none;
-    font-weight:bold;
-}
-.storebutton:hover {
-    background-color: var(--box-button-hover);
-}
-
-.new-tab {
+ .new-tab {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 85%;
     height: 100%;
+    background-image: url('data:image/png;base64,iVBORw0KGg....');
+    opacity: 0.8;
+}
+
+.titre-tab-new {
+    margin-top: 1rem;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    background: var(--background-transparent);
+    color: var(--color);
 }
 
 .news-list {
@@ -149,31 +112,10 @@
 }
 
 .news-block {
-    width: 99%;
+    width: 100%;
     margin: 0 0 1rem 0;
     border-radius: 10px;
-    background-color: var(--sidebar);
-    border-right: 1px solid var(--sidebar-border);
-    transition: all 0.2s;
-    background: rgba( 0, 0, 0, 0.05 );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    backdrop-filter: blur( 30px );
-    -webkit-backdrop-filter: blur( 15.5px );
-}
-
-.news-blockshop {
-    width: 99%;
-    margin: 0 0 1rem 0;
-    border-radius: 10px;
-    background-color: var(--sidebar);
-    border-right: 1px solid var(--sidebar-border);
-    transition: all 0.2s;
-    background: rgba( 0, 0, 0, 0.05 );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    backdrop-filter: blur( 30px );
-    -webkit-backdrop-filter: blur( 15.5px );
+    background: var(--background-transparent);
 }
 
 .news-header {
@@ -188,55 +130,31 @@
     text-underline-offset: 3px;
     font-size: 1.2rem;
     text-align: center;
-    color:#fff;
-}
-
-.header-text .titlechangelog {
-    font-size: 1.8rem;
-    padding: 0 0 0 12rem;
-    text-align: center;
-    color:#fff;
-}
-
-.header-text .titleshop {
-    font-size: 1.8rem;
-    padding: 0 0 0 16rem;
-    text-align: center;
-    color:#fff;
-}
-
-.header-text .titlenews {
-    font-size: 1.8rem;
-    padding: 0 0 0 25rem;
-    text-align: center;
-    color:#fff;
 }
 
 .news-header .date {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color:#fff;
 }
 
 .news-content .bbWrapper {
     padding: 0 1.5rem;
     padding-bottom: 1rem;
     font-size: 1.2rem;
-    color:#fff;
+
 }
 
 .news-content .bbWrapper p {
     font-weight: 100;
     margin: 0;
-    color:#fff;
+
 }
 
 .news-content .bbWrapper .news-author {
     margin-top: 1rem;
     text-align: end;
     font-size: 0.8rem;
-    color:#fff;
 }
 
 .news-content .bbWrapper .news-author span {
@@ -267,6 +185,7 @@
 
 .social-block {
     display: flex;
+    background: var(--background-transparent);
     width: 90px;
     height: 90px;
     margin-bottom: 1rem;
@@ -275,14 +194,6 @@
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    background-color: var(--sidebar);
-    border-right: 1px solid var(--sidebar-border);
-    transition: all 0.2s;
-    background: rgba( 0, 0, 0, 0.05 );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    backdrop-filter: blur( 8px );
-    -webkit-backdrop-filter: blur( 5px );
 }
 
 .social-block .icon-social {
@@ -303,17 +214,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 89%;
+    width: 100%;
     height: 90px;
-    background-color: var(--sidebar);
-    border-right: 1px solid var(--sidebar-border);
-    transition: all 0.2s;
-    background: rgba( 0, 0, 0, 0.05 );
-    border-radius: 10px;
-    
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    backdrop-filter: blur( 8px );
-    -webkit-backdrop-filter: blur( 5px );
+    background: var(--background-transparent);
 }
 
 .player-options {
@@ -346,6 +249,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .play-instance {
@@ -353,26 +257,17 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    background-color: var(--box-button);
-    box-shadow: 0px 3px 6px #00000029;
-    border-radius: 25px;
-    color: var(--icon-unselected);
-    cursor: pointer;
-    z-index: 2;
-    transition: color 0.05s, background-color 0.2s, background-image 0.2s, top 0.2s, left 0.2s, height 0.2s, opacity 0.2s, margin 0.2s;
+    border: solid 3px var(--element-color);
+    border-radius: 15px;
     height: 3.2rem;
-    padding-right: 2rem;
-}
-.play-instance:hover {
-    color: var(--icon-hover);
-    background-color: var(--box-button-hover);
+    padding-right: 1.9rem;
 }
 
 .play-btn {
     border: none;
     border-radius: 10px;
     background: none;
-    color:#fff;
+    color: var(--color);
     font-size: 2rem;
     font-weight: bolder;
     padding: 0 1.5rem;
@@ -383,23 +278,16 @@
     display: flex;
     align-items: center;
     position: absolute;
-    background: transparent;
-    transition: color 0.05s, background-color 0.2s, background-image 0.2s, top 0.2s, left 0.2s, height 0.2s, opacity 0.2s, margin 0.2s;
-    -moz-border-radius: 100px;
-    -webkit-border-radius: 100px;
-    border-radius: 100px;
-    right: -2;
-    top: 0;
-    color: #fff;
+    right: -3;
+    top: -2;
+    color: var(--element-color);
     font-size: 1rem;
     height: calc(100% - 1px);
+    border: solid 3px var(--element-color);
     text-align: center;
-    padding: 0 1rem;
+    border-radius: 15px;
+    padding: 0 0.5rem;
     cursor: pointer;
-}
-.instance-select:hover {
-    background: var(--box-button-hover-2);
-    
 }
 
 .instance-select:before {
@@ -430,19 +318,12 @@
 }
 
 .settings-btn {
-    text-align: center;
     width: 3rem;
     height: 3rem;
     font-size: 3rem;
-    border-radius: 100px;
-    color: #fff;
-    cursor: pointer;
-    z-index: 2;
-    transition: color 0.2s, background-image 0.2s, top 0.2s, left 0.2s, height 0.2s, opacity 0.2s, margin 0.2s;
+    color: var(--element-color);
     margin: 0 1.5rem;
-}
-.settings-btn:hover {
-    color: var(--icon-unselected);
+    cursor: pointer;
 }
 
 .instance-popup {
@@ -450,30 +331,19 @@
     display: none;
     width: 100%;
     height: 100%;
+    background: #000000b3;
     z-index: 10;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: var(--sidebar);
-    border-right: 1px solid var(--sidebar-border);
-    transition: all 0.5s;
-    background: rgba( 0, 0, 0, 0.05 );
-    backdrop-filter: blur( 5px );
-    -webkit-backdrop-filter: blur( 5px );
 }
 
 .instances-tab {
     position: relative;
+    background: var(--background);
     border-radius: 10px;
     padding: 1rem 3rem;
-    transition: all 0.5s;
-    background-color: var(--sidebar);
-    border-right: 1px solid var(--sidebar-border);
-    transition: all 0.2s;
-    background: rgba( 0, 0, 0, 0.9 );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .close-popup {
@@ -509,58 +379,4 @@
 
 .active-instance {
     background: var(--element-color);
-}
-
-
-
-
-.message-container {
-    justify-content: flex-start;
-    width: auto;
-    min-width: 30rem;
-    max-width: 40rem;
-    height: 3rem;
-    border-radius: 10px;
-    margin-top: 3rem;
-    margin-right: 2rem;
-    padding: 1rem ;
-    text-align: left;
-    align-items: center;
-    background-color: var(--sidebar);
-    border-right: 1px solid var(--sidebar-border);
-    transition: all 0.2s;
-    background: var(--notification-green);
-    border-radius: 10px;
-    display: flex;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    backdrop-filter: blur( 15.5px );
-    -webkit-backdrop-filter: blur( 15.5px );
-}
-
-.message-title {
-    font-size: 1.2rem;
-    color:#fff;
-}
-.message-content {
-    font-size: 0.8rem;
-    color:#fff;
-}
-
-.message-icon {
-    justify-content: center;
-    height: 2.3rem;
-    width: 3.2rem;
-    margin-right: 1rem;
-    order: 1;
-}
-.message-icon, .message-text {
-    display: flex; /* Añade esto para hacer que los hijos de .message-icon y .message-text se muestren en línea */
-    flex-direction: column; /* Añade esto para hacer que los hijos se muestren en columna */
-}
-.message-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Alinea los elementos hijos al inicio (izquierda) */
-    justify-content: center;
-    order: 2; /* Cambia el orden de visualización para que aparezca antes del icono */
 }

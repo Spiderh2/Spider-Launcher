@@ -1,7 +1,7 @@
 {
     "name": "spider-client",
     "preductname": "spider client",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Cliente de SpiderStudio",
     "main": "src/app.js",
     "author": {
