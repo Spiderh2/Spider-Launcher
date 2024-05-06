@@ -1,7 +1,7 @@
 {
     "name": "spider-client",
     "preductname": "spider client",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Cliente de SpiderStudio",
     "main": "src/app.js",
     "author": {
@@ -9,7 +9,7 @@
         "email": "spiderstidioh@gmail.com",
         "url": "http://"
     },
-    "url": "https://spiderh1.000webhostapp.com/",
+    "url": "https://spiderh2.000webhostapp.com/",
     "scripts": {
         "start": "cross-env-shell NODE_ENV=dev electron .",
         "dev": "cross-env-shell DEV_TOOL=open nodemon --exec npm start",
